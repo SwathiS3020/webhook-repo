@@ -35,3 +35,43 @@ Each webhook is saved in this structure:
   "to_branch": "main",
   "timestamp": "06 July 2025 - 07:35 PM IST"
 }
+---
+
+## 🌐 Ngrok Public URL – Please Read Before Testing
+
+> **Note for the Reviewer:**  
+> This project uses [ngrok](https://ngrok.com/) to expose the Flask application running on `localhost:5000` to the public internet so GitHub can send webhook events to it.
+
+### ❓ Why ngrok?
+
+GitHub webhooks require a **publicly accessible URL** to deliver payloads. Since this application runs locally during development, we use `ngrok` to generate a temporary public URL that tunnels to `localhost`.
+
+---
+
+### ⚠️ Important Limitation of ngrok Free Plan
+
+When using the free version of ngrok:
+
+- The public URL changes **every time ngrok is restarted**
+- The webhook URL configured in GitHub must be updated **each time** the ngrok URL changes
+- If the old URL is used or ngrok is not running, you will get a `404 Not Found` or `ERR_NGROK_3200`
+
+---
+
+### 🛠️ How to Test This Project 
+
+If you wish to test this project on your machine:
+
+1. Install [ngrok](https://ngrok.com/download)
+2. Start your local Flask server:
+
+   ```bash
+   python app.py
+
+
+### 🖼️ Webhook Frontend UI
+
+![Webhook Frontend UI](screenshots/ui-screenshot.png)
+
+
+
